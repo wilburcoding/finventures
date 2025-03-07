@@ -7,9 +7,11 @@ body {
 }
 
 main {
+  position:relative;
   width: 100%;
   height: 200vh;
-  display: unset
+  display: unset;
+  z-index:523;
 }
 
 .hometl {
@@ -40,6 +42,10 @@ main {
   outline: none;
   border: none;
   border-radius: 5px;
+  transition-duration: 0.15s
+}
+.primary:hover {
+  background-color:#5297ff;
 }
 
 .secondary {
@@ -50,6 +56,10 @@ main {
   outline: none;
   border: solid 1.5px #1871f7;
   border-radius: 5px;
+  transition-duration:0.15s;
+}
+.secondary:hover {
+  background-color:#e8f1ff;
 }
 
 .hometl p {
@@ -80,15 +90,19 @@ main {
   width: 100%;
   margin: 0;
   padding: 0;
+  z-index:1;
 }
 
 #bglayer img {
   width: 100%;
   object-fit: cover;
+  z-index:4;
+  pointer-events: none;
+
 }
 
 #navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -98,8 +112,9 @@ main {
   align-items: center;
   flex-direction: row;
   width: 70%;
-  background-color: #c8deff;
+  background-color: #d6e7ff;
   border-radius: 5px;
+  z-index:828;
 }
 #navlinks {
   margin-left:auto;
