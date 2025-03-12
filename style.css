@@ -79,9 +79,43 @@ main {
   align-items: flex-start;
 }
 
+.aboutm {
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.aboutm h1 {
+  font-size: 71px;
+  color: #212529;
+  text-wrap: pretty;
+  line-height: 59px;
+}
+
 .homem {
-  height: 100vh;
   width: 100%;
+  padding-top:30vh;
+}
+.homem h1 {
+  margin-bottom:3px;
+}
+.homem h3 {
+  margin-top:3px;
+  font-size:25px;
+  line-height: 25px;
+  font-weight:400;
+  margin-bottom:4vh;
+  
+}
+.aboutm img {
+  width:90%;
+  border-radius:15px;
+}
+.aboutm p {
+  font-size:22px;
+  text-align: center;
+  text-align: balance;
 }
 
 .homeinfoc {
@@ -89,66 +123,76 @@ main {
   width: 100%;
   margin-bottom: 20vh;
 }
+
 .ffull {
-  width:80%;
-  display:flex;
+  width: 80%;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
 
 }
+
 .footer {
-  width:100%;
+  width: 100%;
   background-color: #d6e7ffc8;
   backdrop-filter: blur(10px);
-  display:flex;
-  margin-top:15vh;
-  padding-top:40px;
-  padding-bottom:40px;
+  display: flex;
+  margin-top: 15vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
+
 .fc1 h1 {
-  margin-bottom:2px;
+  margin-bottom: 2px;
   line-height: 35px;
   font-size: 35px;
-  
+
 }
+
 .fc1 p {
-  font-size:12px;
-  margin-bottom:2px;
-  margin-top:2px;
-  color:rgb(73, 73, 73);
+  font-size: 12px;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  color: rgb(73, 73, 73);
 }
+
 .fc1 h2 {
-  margin-top:15px;
-  margin-bottom:40px;
+  margin-top: 15px;
+  margin-bottom: 40px;
   font-size: 15px;
   font-weight: 300;
 }
+
 .fc1 {
-  display:flex;
-  width:30%;
-  margin-right:10%;
+  display: flex;
+  width: 30%;
+  margin-right: 10%;
   flex-direction: column;
 }
+
 .fc2 {
   display: flex;
-  margin-top:30px;
+  margin-top: 30px;
   width: 20%;
   flex-direction: column;
 }
+
 .fc2 h2 {
-  font-size:18px;
-  margin-bottom:15px;
-  margin-top:2px;
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 2px;
 }
+
 .fc2 p {
-  font-size:14px;
-  margin-bottom:6px;
-  margin-top:6px;
+  font-size: 14px;
+  margin-bottom: 6px;
+  margin-top: 6px;
 }
+
 .homebot {
   margin-top: 10vh;
   flex-direction: column;
@@ -187,9 +231,11 @@ main {
   height: 50vh;
   justify-content: center;
 }
+
 #servicesabout h1 {
-  font-size:50px;
+  font-size: 50px;
 }
+
 #servicesabout h1 span {
   color: #1871f7;
 }
