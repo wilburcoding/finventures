@@ -89,19 +89,65 @@ main {
   width: 100%;
   margin-bottom: 10vh;
 }
+.ffull {
+  width:80%;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
 .footer {
   width:100%;
+  background-color: #d6e7ffc8;
+  backdrop-filter: blur(10px);
   display:flex;
-  margin-top:25vh;
-  flex-direction: column;
+  margin-top:15vh;
+  padding-top:40px;
+  padding-bottom:40px;
+  flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
-.footer p {
-  font-size:20px;
+.fc1 h1 {
+  margin-bottom:2px;
+  line-height: 35px;
+  font-size: 35px;
+  
+}
+.fc1 p {
+  font-size:12px;
   margin-bottom:2px;
   margin-top:2px;
-  margin-left:20px;
+  color:rgb(73, 73, 73);
+}
+.fc1 h2 {
+  margin-top:15px;
+  margin-bottom:40px;
+  font-size: 15px;
+  font-weight: 300;
+}
+.fc1 {
+  display:flex;
+  width:30%;
+  margin-right:10%;
+  flex-direction: column;
+}
+.fc2 {
+  display: flex;
+  margin-top:30px;
+  width: 20%;
+  flex-direction: column;
+}
+.fc2 h2 {
+  font-size:18px;
+  margin-bottom:15px;
+  margin-top:2px;
+}
+.fc2 p {
+  font-size:14px;
+  margin-bottom:6px;
+  margin-top:6px;
 }
 .homebot {
   margin-top: 10vh;
@@ -224,7 +270,7 @@ main {
 }
 
 #navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -234,8 +280,9 @@ main {
   align-items: center;
   flex-direction: row;
   width: 70%;
-  background-color: #d6e7ff;
+  background-color: #d6e7ffce;
   border-radius: 5px;
+  backdrop-filter: blur(10px);
   z-index: 828;
 }
 
