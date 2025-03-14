@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>FinVentures</title>
+  <title>FinVentures - Blog</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="./favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
 <body>
   <div id="bglayer">
     <img src="./assets/finventureshead.png"
-      style="margin-top:45vh;height:85vh;width:1000px;min-width:100%;overflow:hidden;object-fit:fill">
+      style="margin-top:35vh;height:85vh;width:1000px;min-width:100%;overflow:hidden;object-fit:fill;transform: scaleX(-1);">
   </div>
   <div id="navbar">
     <h1>FinVentures</h1>
@@ -36,17 +36,17 @@
   </div>
   <main>
     <div class="container homem">
-      <div class="quotetl">
+      <div class="container blogm">
         <h1>Our <span style="color:#3082ff;font-weight:800">Blog</span></h1>
-        <p style="margin-bottom:6px;">Our blog provides expert insights, investment strategies, and financial tips to help you navigate the world of investing
-        with confidence. Stay informed with the latest market trends, practical advice, and in-depth articles designed to
-        support investors at every level.
-        </p>
+        <h3>We share expert investment insights, market trends, and financial strategies to help you make informed
+          decisions and
+          grow your wealth.</h3>
+        <div class="blogc">
 
+        </div>
       </div>
-
     </div>
-    <div class="footer" style="margin-top:30vh">
+    <div class="footer">
       <div class="ffull">
         <div class="fc1">
           <h1>FinVentures</h1>
@@ -69,6 +69,45 @@
     </div>
 
   </main>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getFirestore, collection, doc, setDoc, getDoc, query, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBoLd-79CvEVwTrsZXZ6m77Q3nae1azjMM",
+      authDomain: "finventures-8e3c0.firebaseapp.com",
+      projectId: "finventures-8e3c0",
+      storageBucket: "finventures-8e3c0.firebasestorage.app",
+      messagingSenderId: "917186189705",
+      appId: "1:917186189705:web:855b0a2577ffd31191e958"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    async function loadData() {
+      const q = query(collection(db, "posts"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const ddata = doc.data();
+        const id = doc.id;
+        const created = new Date(ddata.created * 1000)
+
+        $(".blogc").append(`
+          <div class="post" id="e${id}">
+            <img src="${ddata.image}"/>
+            <h1 class="ph1">${ddata.title}</h1>
+            <p style="margin-left:10px;margin-top:0;margin-bottom:8px;font-size:13px;color:rgb(57, 57, 57)">${ddata.author}<span style="margin-left:8px;margin-right:8px;">-</span>${created.getMonth() + 1}/${created.getDate()}/${created.getFullYear()}</p>
+            <p style="margin-left:10px;margin-top:0;margin-bottom:15px;margin-right:10px;">${ddata.subtitle}</p>
+          </div>
+          `)
+        $("#e" + id).on("click", function () {
+          window.location.href = "/post.html?id=" + id;
+        })
+      });
+    }
+    loadData();
+  </script>
 
 </body>
 

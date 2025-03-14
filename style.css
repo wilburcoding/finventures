@@ -162,7 +162,7 @@ td {
 
 .homeinfo {
   width: 80%;
-  margin-top: 20vh;
+  margin-top: 30vh;
   background-color: transparent;
   padding: 30px;
   border-radius: 50px;
@@ -175,12 +175,74 @@ td {
   display: flex;
   justify-content: center;
 }
+.post {
+  display: flex;
+  flex-direction: column;
+  background-color: #c4dcffa3;
+  width: 400px;
+  backdrop-filter: blur(10px);
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius:7px;
+  margin-bottom: 20px;
+  transition-duration: 0.2s;
+}
 
+.post h1 {
+  width: 95% !important;
+  font-size: 40px !important;
+  margin: 10px !important;
+  margin-top:8px !important;
+  line-height:38px !important;
+  margin-bottom: 3px !important;
+  text-wrap:wrap !important;
+}
+
+.post hr {
+  border-top-color: black;
+  width: 95%;
+  border-bottom: none
+}
+
+.post:hover {
+  scale: 1.05;
+}
+
+.post img {
+  height: 30vh;
+  border-radius:7px;
+  width: 100%;
+  object-fit: cover;
+}
+.blogc {
+  width:80%;
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
 .aboutm h1 {
   font-size: 71px;
   color: #212529;
   text-wrap: pretty;
   line-height: 59px;
+}
+.blogm {
+  width: 50%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+
+.blogm h1 {
+  font-size: 71px;
+  color: #212529;
+  text-wrap: pretty;
+  line-height: 59px;
+}
+.blogm h3 {
+  text-align: center;
 }
 
 .homem {
@@ -420,7 +482,7 @@ td {
   align-items: center;
   flex-direction: row;
   width: 70%;
-  background-color: #d6e7ffce;
+  background-color: #d6e7ffc5;
   border-radius: 5px;
   backdrop-filter: blur(10px);
   z-index: 828;
