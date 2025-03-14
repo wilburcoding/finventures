@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FinVentures - Blog</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div id="bglayer">
+    <img src="./assets/finventureshead.png"
+      style="margin-top:45vh;height:85vh;width:1000px;min-width:100%;overflow:hidden;object-fit:fill;transform:scaleX(-1)">
+  </div>
+  <div id="navbar">
+    <h1>FinVentures</h1>
+    <div id="navlinks">
+      <p>About Us</p>
+      <p>Our Blog</p>
+      <p>Get a Quote</p>
+      <button class="primary" style="font-size: 15px;margin-left:0px;">
+        Schedule a Demo
+      </button>
+    </div>
+  </div>
+  <main>
+    <div class="container homem">
+      <div class="container blogm" style="width:60%;align-items: flex-start;justify-content: flex-start;" id="content">
+        <p id="return">Return to News Posts</p>
+
+      </div>
+    </div>
+    <div class="footer">
+      <div class="ffull">
+        <div class="fc1">
+          <h1>FinVentures</h1>
+          <h2>Empowering investors with expert education and personalized mentoring to build wealth and achieve
+            financial success.</h2>
+          <p>Copyright © 2024 FinVentures. All Rights Reserved</p>
+          <p>Designed by Revvifi New York</p>
+        </div>
+        <div class="fc2">
+          <h2>Menu</h2>
+          <p>About Us</p>
+          <p>Our Blog</p>
+          <p>Get a Quote</p>
+          <p>Schedule a Demo</p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </main>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getFirestore, collection, doc, setDoc, getDoc, query, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBoLd-79CvEVwTrsZXZ6m77Q3nae1azjMM",
+      authDomain: "finventures-8e3c0.firebaseapp.com",
+      projectId: "finventures-8e3c0",
+      storageBucket: "finventures-8e3c0.firebasestorage.app",
+      messagingSenderId: "917186189705",
+      appId: "1:917186189705:web:855b0a2577ffd31191e958"
+    };
+    var converter = new showdown.Converter()
+    const convert = (data, id) => $("#" + id).html(converter.makeHtml(data))
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    let posts = {}
+    async function loadData() {
+      const q = query(collection(db, "posts"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const ddata = doc.data();
+        const created = new Date(ddata.created * 1000)
+        let ndata = ddata;
+        ndata.created = created
+        posts[doc.id] = ndata;
+        console.log(posts)
+      });
+      var url = new URL(window.location.href);
+      var c = url.searchParams.get("id");
+      if (Object.keys(posts).includes(c)) {
+        const d = posts[c];
+        const created = d.created;
+        $("#content").append(`
+      <h1 style="margin-bottom:5px;font-size:60px;text-wrap:balance">${d.title}</h1>
+      <h2 style="margin-top:4px;margin-bottom:3px;font-size:25px;color:rgb(61, 61, 61);margin-bottom:5px;text-wrap:balance">${d.subtitle}</h2>
+      <h3 style="margin-top:4px;margin-bottom:3px;font-size:15px;font-weight:400;color:rgb(88, 88, 88);margin-bottom:35px;">Posted on ${created.getMonth() + 1}/${created.getDate()}/${created.getFullYear()} by ${d.author}</h3>
+      <br>
+      `)
+        if (String(d.image).length > 0) {
+          $("#content").append(`<img src="${d.image}" style="max-height:60vh;max-width:100%;min-width:70%;object-fit: cover;"/>`)
+        }
+        $("#content").append("<div id='mcontent'></div>")
+        convert(d.content, "mcontent")
+      } else {
+        console.log('boo')
+        window.location.href = "./blog.html"
+      }
+    }
+    loadData();
+    $("#return").on('click', function () {
+      window.location.href = "./blog.html"
+    })
+
+
+  </script>
+
+</body>
+
+</html>
